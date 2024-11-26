@@ -1,13 +1,65 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Gradient Animation for h1 and h2 */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Heading (h1) with animated gradient text */
+.heading {
+  font-size: 4rem; /* Large font size */
+  font-weight: bold;
+  background: linear-gradient(90deg, #6a0dad, #4e73df, #6a0dad); /* Purple to blue gradient */
+  background-size: 200% 200%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradient 4s ease infinite;
+  text-align: center;
+  margin-right: 10px; /* Reduced space between h1 and h2 */
+  margin-bottom: 10px; /* Reduced space between h1 and h2 */
+}
+
+/* Slider-heading (h2) with gradient border and transparent text */
+.slider-heading {
+  font-size: 3rem; /* Slightly smaller font size for h2 */
+  font-weight: bold;
+  position: relative;
+  color: blue; /* Transparent text */
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-align: center; /* Center the text inside the box */
+  border: 4px solid transparent;
+  border-radius: 10px; /* Rounded corners */
+  padding: 10px 20px; /* Padding around the text */
+  margin-top: 0; /* Remove margin-top to bring h2 closer to h1 */
+  display: inline-block; /* Keep the element in line with h1 */
+  z-index: 1;
+  box-sizing: border-box; /* Prevent text from overflowing */
+  line-height: 1.5; /* Ensure vertical centering of text */
+}
+
+/* Gradient border for slider-heading */
+.slider-heading::before {
+  content: ''; /* Adding a pseudo-element */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #93C5FD; /* Solid gradient border */
+  border-radius: 10px;
+  z-index: -1; /* Behind the text */
+  animation: gradient 4s ease infinite;
 }
